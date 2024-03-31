@@ -1,5 +1,5 @@
 .grid {
-    posdition: absolute;
+    position: absolute;
     height: 300px;
     width: 600px;
     border: solid black 1px;
@@ -10,5 +10,4 @@
     width: 100px;
     height: 20px;
     background-color: blue;
-    left: 50px;
 }
