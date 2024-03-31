@@ -1,5 +1,11 @@
 .grid {
-    height: 600px;
+    height: 300px;
     width: 600px;
-    
+    border: solid black 1px;
+}
+
+.block {
+    width: 100px;
+    height: 20px;
+    background-color: blue;
 }
