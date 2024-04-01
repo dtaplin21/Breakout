@@ -41,3 +41,12 @@ grid.appendChild(block)
 }
 
 addBlock()
+
+//add user
+function addUser() {
+const user = document.createElement('div')
+user.classList.add('user');
+grid.appendChild(user)
+}
+
+addUser()
