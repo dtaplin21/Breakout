@@ -112,6 +112,21 @@ function moveBall() {
 timerId = setInterval(moveBall, 30);
 
 function checkBallCollision() {
+    for(let i = 0; i < blocks.length; i++) {
+        if(
+            (ballCurrentPosition[0] > blocks[i].bottomLeft[0] && ballCurrentPosition[0] < blocks[i].bottomRight[0]) &&
+                ((ballCurrentPosition[1] + ballDiameter) > blocks[i].bottomLeft[1] && ballCurrentPosition[1] < blocks[i].topLeft[1])
+        ) {
+            const allBlocks = Array.from(document.querySelectorAll('.block'))
+            allBlocks[i].classList.remove('block')
+            blocks.splice(i, 1)
+            changeDirection()
+        }
+    }
+
+
+
+
     if(ballCurrentPosition[0] >= (boardWidth - ballDiameter) || 
     ballCurrentPosition[1] >= (boardHeight - ballDiameter) ||
     ballCurrentPosition[0] <= 0
@@ -121,8 +136,8 @@ function checkBallCollision() {
 
     //check for game over
     if(ballCurrentPosition[1] <= 0) {
-        clearInterval(timerId);
-        scoreDisplay.innerHTML = "You Lose"
+        clearInterval(timerId)
+        scoreDisplay.innerHTML = 'You Lose'
         document.removeEventListener('keydown', moveUser)
     }
 }
