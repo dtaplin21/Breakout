@@ -8,6 +8,7 @@ const boardHeight = 300;
 let timerId
 let xDirection = -2;
 let yDirection = 2;
+let score = 0
 
 const userStart = [230, 10]
 let currentPosition = userStart
@@ -119,9 +120,15 @@ function checkBallCollision() {
         ) {
             const allBlocks = Array.from(document.querySelectorAll('.block'))
             allBlocks[i].classList.remove('block')
+            console.log(allBlocks)
             blocks.splice(i, 1)
             changeDirection()
+            score++
+            scoreDisplay.innerHTML = score
+
+
         }
+        
     }
 
 
@@ -133,6 +140,14 @@ function checkBallCollision() {
     )  {
         changeDirection()
     }
+
+    //check for user collisions
+    if(
+        ballCurrentPosition[0] > ballCurrentPosition[0] < currentPosition[0] + blockWidth &&
+        (ballCurrentPosition[1] > currentPosition[1] && ballCurrentPosition[1] > currentPosition[1] + blockHeight)
+        ) {
+            changeDirection()
+        }
 
     //check for game over
     if(ballCurrentPosition[1] <= 0) {
