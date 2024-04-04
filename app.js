@@ -106,8 +106,8 @@ grid.appendChild(ball)
 function moveBall() {
     ballCurrentPosition[0] += xDirection;
     ballCurrentPosition[1] += yDirection;
-    drawBall()
-    checkBallCollision()
+    drawBall();
+    checkBallCollision();
 }
 
 timerId = setInterval(moveBall, 30);
@@ -126,10 +126,17 @@ function checkBallCollision() {
             score++
             scoreDisplay.innerHTML = score
 
+            //check for win
+            if(blocks.length === 0) {
+                scoreDisplay.innerHTML = " You Win"
+                clearInterval(timerId);
+                document.removeEventListener('keydown', moveUser)
+            }
 
         }
         
     }
+
 
 
 
